@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
               datasets: [{
                   label: 'Total Accidents by City',
                   data: cityAccidents,
-                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                  borderColor: 'rgba(75, 192, 192, 1)',
+                  backgroundColor: '#5B99C2',
+                  borderColor: 'rgba(75, 192, 193, 1)',
                   borderWidth: 1
               }]
           },
@@ -54,28 +54,34 @@ document.addEventListener("DOMContentLoaded", () => {
           }
       });
 
-      // 2. Pie Chart: Distribution of accidents by state
-      const stateData = accidentsData.reduce((acc, curr) => {
-          acc[curr.STATE] = acc[curr.STATE] ? acc[curr.STATE] + 1 : 1;
-          return acc;
-      }, {});
-      const stateLabels = Object.keys(stateData);
-      const stateAccidents = Object.values(stateData);
+      const cityNames = accidentsData.reduce((acc, curr) => {
+        acc[curr.CITYNAME] = acc[curr.CITYNAME] ? acc[curr.CITYNAME] + 1 : 1;
+        return acc;
+    }, {});
+    
+    // 2. Prepare chart data
+    const cityNameLabels = Object.keys(cityNames);
+    const cityAccidentsList = Object.values(cityNames);
 
-      const statePieChart = new Chart(document.getElementById('statePieChart'), {
-          type: 'pie',
-          data: {
-              labels: stateLabels,
-              datasets: [{
-                  data: stateAccidents,
-                  backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#FF8C33'],
-                  hoverOffset: 4
-              }]
-          },
-          options: {
-              responsive: true
-          }
-      });
+    const cityPieChart = new Chart(document.getElementById('cityPieChart'), {
+        type: 'pie',
+        data: {
+            labels: cityNameLabels,
+            datasets: [{
+                data: cityAccidentsList,
+                backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#FF8C33', '#FFC300', '#C70039'],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top'
+                }
+            }
+        }
+    });
 
       // 3. Line Chart: Trend of accidents over the years
       const yearData = accidentsData.reduce((acc, curr) => {
