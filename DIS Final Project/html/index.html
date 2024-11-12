@@ -9,21 +9,22 @@
     <title>Fatal Motor Vehicle</title>
 </head>
 <body>
-    <nav id="top" class="navbar-main">
-        <h3 class="main-header">Fatal Motor Vehicle Crash Analysis</h3>
-
+    <nav class="navbar-main">
+        <h3 class="main-header">Florida Motor Vehicle Crashes</h3>
         <ul class="nav-item-list">
             <li class="list-item"><a href="#top">Home</a></li>
-            <li class="list-item"><a href="#report">Report</a></li>
-            <li class="list-item"><a href="#services">Services</a></li>
-            <li class="list-item"><a href="#work">My Work</a></li>
-            <li class="list-item"><a href="#contact">Contact me</a></li>
+            <li class="list-item"><a href="#report-header">Report</a></li>
+            <li class="list-item"><a aria-current="page" href="charts.html" target="_top">Visuals</a></li>
+            <li class="list-item"><a aria-current="page" href="about-us.html" target="_top">About US</a></li>
         </ul>
     </nav>
-    <div class="img-slide">
+    <div id="top" class="img-slide">
         <img src="./car3.jpg"/>
     </div>
-    <h4 class="report-header"> Florida Fatal Motor Vehicle Crash Report from 2021 - 2024</h4>
+    <div class="header-sub">
+        <h4 id="report-header" class="report-header"> Florida Fatal Motor Vehicle Crash Report from 2021 - 2024</h4>
+        <a href="#form-divison"><button class="btn btn-success">Add Accident</button><br/></a>
+    </div>
     <table id="report" class="crash-report">
         <thead>
             <tr>
@@ -39,13 +40,20 @@
         </thead>
         <tbody></tbody>
     </table>
-
-    <form id="accidentForm">
-        <input type="hidden" id="accidentId" />
-        <input type="text" id="location" placeholder="Enter Location" />
-        <input type="text" id="date" placeholder="Enter Date" />
-        <button id="addBtn" type="submit">Add Accident</button>
-    </form>
+    <div class="form-div" id="form-divison">
+        <form id="accidentForm" class="accident-form">
+            <h3>Add new accident</h3>
+            <input type="hidden" id="accidentId" />
+            <input type="number" id="city" placeholder="Enter City number" required/> <br/>
+            <input type="text" id="cityname" placeholder="Enter City Name" required/><br/>
+            <input type="text" id="county" placeholder="Enter County Name" required/><br/>
+            <input type="text" id="state" placeholder="Enter state" required/><br/>
+            <input type="number" id="year" placeholder="Enter case year" required/><br/>
+            <input type="text" id="caseid" placeholder="Enter case ID" required/><br/>
+            <input type="number" id="vehicleno" placeholder="Enter Total Vehicles" required/><br/>
+            <button id="addBtn" class="btn btn-success" type="submit">Add Accident</button><br/>
+        </form>
+    </div>
     <script src="../js/app.js"></script>
 </body>
 </html>
